@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9ff0074e0d4f73f59e51ef2b57c4b9dd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_9ff0074e0d4f73f59e51ef2b57c4b9dd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9ff0074e0d4f73f59e51ef2b57c4b9dd = L.map(
+                "map_9ff0074e0d4f73f59e51ef2b57c4b9dd",
+                {
+                    center: [47.3977415, 8.5455875],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 18,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c3fb5b9ad1e243f0873cc0dc2c85efb6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c3fb5b9ad1e243f0873cc0dc2c85efb6.addTo(map_9ff0074e0d4f73f59e51ef2b57c4b9dd);
+        
+    
+            var marker_23c3ca8b9b0ed5b1c637798c56d545e0 = L.marker(
+                [47.3977415, 8.5455875],
+                {}
+            ).addTo(map_9ff0074e0d4f73f59e51ef2b57c4b9dd);
+        
+    
+            var icon_6cc4a8d6582de07d1952141ae7d9af41 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_23c3ca8b9b0ed5b1c637798c56d545e0.setIcon(icon_6cc4a8d6582de07d1952141ae7d9af41);
+        
+    
+        var popup_23946464ef51c578f3c1cadae415fe3a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5e31bd3a716451cf785f50d982a35ca = $(`<div id="html_c5e31bd3a716451cf785f50d982a35ca" style="width: 100.0%; height: 100.0%;">Takeoff  lat 47.3977415 lon 8.5455875</div>`)[0];
+                popup_23946464ef51c578f3c1cadae415fe3a.setContent(html_c5e31bd3a716451cf785f50d982a35ca);
+            
+        
+
+        marker_23c3ca8b9b0ed5b1c637798c56d545e0.bindPopup(popup_23946464ef51c578f3c1cadae415fe3a)
+        ;
+
+        
+    
+    
+            var marker_98bc08f7f473ace71167e9f16dca4328 = L.marker(
+                [47.3977415, 8.5455875],
+                {}
+            ).addTo(map_9ff0074e0d4f73f59e51ef2b57c4b9dd);
+        
+    
+            var icon_aa5c64d0484844a6aa57309a8c04a4cc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_98bc08f7f473ace71167e9f16dca4328.setIcon(icon_aa5c64d0484844a6aa57309a8c04a4cc);
+        
+    
+        var popup_9a993ae555fc03eea0d18207ed044241 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c3d4d410844e417f08455a90a85bc536 = $(`<div id="html_c3d4d410844e417f08455a90a85bc536" style="width: 100.0%; height: 100.0%;">Land total distance 31.847807960938972 m</div>`)[0];
+                popup_9a993ae555fc03eea0d18207ed044241.setContent(html_c3d4d410844e417f08455a90a85bc536);
+            
+        
+
+        marker_98bc08f7f473ace71167e9f16dca4328.bindPopup(popup_9a993ae555fc03eea0d18207ed044241)
+        ;
+
+        
+    
+    
+            var poly_line_7ff65676d4b729946355e335986102c7 = L.polyline(
+                [[47.3977415, 8.5455875], [47.3977396, 8.5456843], [47.3977986, 8.5456932], [47.3978223, 8.54558]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_9ff0074e0d4f73f59e51ef2b57c4b9dd);
+        
+</script>
+</html>
