@@ -1,0 +1,13 @@
+train: /Users/alshayn/program/tgu/БПЛА2/YOLO_Train/Ducks.v1i.yolov11/train/images
+val: /Users/alshayn/program/tgu/БПЛА2/YOLO_Train/Ducks.v1i.yolov11/valid/images
+test: /Users/alshayn/program/tgu/БПЛА2/YOLO_Train/Ducks.v1i.yolov11/test/images
+
+nc: 1
+names: ['Duck']
+
+roboflow:
+  workspace: alshayn
+  project: ducks-jy9v0
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/alshayn/ducks-jy9v0/dataset/1

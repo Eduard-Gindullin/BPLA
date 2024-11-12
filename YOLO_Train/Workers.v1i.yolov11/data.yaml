@@ -1,0 +1,13 @@
+train: D:\Python projects\BPLA\YOLO_Train\Workers.v1i.yolov11\train\images
+val: D:\Python projects\BPLA\YOLO_Train\Workers.v1i.yolov11\valid\images
+test: D:\Python projects\BPLA\YOLO_Train\Workers.v1i.yolov11\test\images
+
+nc: 3
+names: ['Gloves', 'Helmet', 'Jacket']
+
+roboflow:
+  workspace: alshayn
+  project: workers-wbxzl
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/alshayn/workers-wbxzl/dataset/1
