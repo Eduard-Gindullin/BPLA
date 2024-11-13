@@ -38,6 +38,7 @@ while True:
     mode_choice = input("Выберите режим: 1 - детекция, 2 - сегментация: ")
     if model_choice == '1':
         mode = 'detection'
+        
         break
     elif mode_choice == '2':
         mode = 'segmentation'
