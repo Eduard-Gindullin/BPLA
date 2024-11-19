@@ -2,6 +2,7 @@
     "python.pythonPath": "venv\\Scripts\\python.exe",
     "python.autoComplete.extraPaths": [
             "D:\\BPLA\\BPLA"
-    ]
+    ],
+    "python.analysis.autoImportCompletions": true
 }
 
