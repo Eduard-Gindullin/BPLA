@@ -3,6 +3,9 @@
     "python.autoComplete.extraPaths": [
             "D:\\BPLA\\BPLA"
     ],
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": [
+        "D:\\BPLA\\BPLA"
+    ]
 }
 
