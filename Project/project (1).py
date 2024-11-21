@@ -151,6 +151,25 @@ def browse_file():
         else:
             messagebox.showerror("Неверный файл", "Выберите файл с расширением .plan")
 
+# Полет по плану
+def fly_by_plan():
+    if flight_plan is None:
+        messagebox.showerror('Ошибка', "План полета не загружен")
+        return
+    def run_flight_plan():
+        drone_position = []
+        for item in flight_plan['mission']["items"]:
+            command = item["command"]
+            if command == 22:
+                if get_telemetry().armed:
+                    home_lat = flight_plan["mission"]["plannedHomePosition"][0]
+                    home_lon = flight_plan["mission"]["plannedHomePosition"][1]
+                    navigate_global(home_lat, home_lon, 3, yaw= math.inf, speed=1)
+                    arrival_wait()
+                    land()
+
+
+
 # Обработка и вывод изображения с камеры
 def camera_image(msg):
     global latest_image
@@ -327,7 +346,7 @@ load_plan_button = tk.Button(window, text="Загрузить план", width=2
 home_button = tk.Button(window, text="Домой", width=20, relief="solid", command=fly_home).grid(row=6, column=1, padx=20, pady=5)
 telemetry_button = tk.Button(window, text="Телеметрия", width=20, relief="solid",command=show_telemetry).grid(row=7, column=1, padx=20, pady=5)
 local_coordinates = tk.Button(window, text="Лок. Координаты", width=20, relief="solid",command=fly_to_local_coodinates).grid(row=8, column=1, padx=20, pady=5)
-activate_plan = tk.Button(window, text="Активировать план", width=20, relief="solid").grid(row=10, column=1, padx=20, pady=5 )
+activate_plan = tk.Button(window, text="Активировать план", width=20, relief="solid", command=fly_by_plan).grid(row=10, column=1, padx=20, pady=5 )
 
 status_label = tk.Label(window, text="Состояние дрона", fg="blue")
 status_label.grid(row=11, column=0, columnspan=2)
