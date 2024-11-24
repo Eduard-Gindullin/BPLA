@@ -87,7 +87,7 @@ def fly_to_local_coodinates():
         else:
             speed = 1.0
         threading.Thread(target=navigate, args=(x, y, z, speed, 1, "body", True)).start()
-        status_label.config(text=f"X: {x}, Y: {y}, высотf {z} и скорость {speed}")
+        status_label.config(text=f"X: {x}, Y: {y}, высоты {z} и скорость {speed}")
     except:
         status_label.config(text="Ошибка: введите числовые значения для  X, Y, высоты и скорости")
 
