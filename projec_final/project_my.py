@@ -182,7 +182,12 @@ def takeoff():
             speed = float(entry_speed.get())
         else:
             speed = 1.0
-        threading.Thread(target=navigate, args=(0, 0, z, speed, 1, "body", True)).start()
+        x = 0
+        y = 0
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(target=navigate, args=(x, y, z, yaw, speed, frame_id, auto_arm)).start()
         status_label.config(text=f"Взлет на высоту {z} м со скоростью {speed} м/с")
         
     except:
@@ -206,58 +211,98 @@ def fly_to_local_coodinates():
             speed = float(entry_speed.get())
         else:
             speed = 1.0
-        threading.Thread(target=navigate, args=(x, y, z, speed, 1, "body", True)).start()
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
         status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
     except:
         status_label.config(text="Ошибка: введите числовые значения для  X, Y, высоты и скорости")
 
 # Полет по кнопкам
-def fly_by_buttons_forward(x=0, y=0, z=0, speed=0.5, frame_id='body', auto_arm=False):
-        res = navigate(x=x, y=y, z=z, yaw=float('nan'), speed=speed, frame_id=frame_id, auto_arm=auto_arm)
+def fly_by_buttons_forward():
+        x = 1
+        y = 0
+        z = 0
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
-        if not res.success:
-            raise Exception(res.message)
+def fly_by_buttons_backward():
+        x = -1
+        y = 0
+        z = 0
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
-        while not rospy.is_shutdown():
-            telem = get_telemetry(frame_id='navigate_target')
-            if math.sqrt(telem.x ** 2 + telem.y ** 2 + telem.z ** 2) < 0.2:
-                return
-            rospy.sleep(0.2)
-        threading.Thread(fly_by_buttons_forward(x=0.5, y=0, z=0, frame_id='body', speed=0.5, auto_arm=True)).start()
+def fly_by_buttons_right():
+        x = 0
+        y = 0
+        z = 0
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float(30)
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
+def fly_by_buttons_left():
+        x = 0
+        y = 0
+        z = 0
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float(-30)
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
+def fly_by_buttons_up():
+        x = 0
+        y = 0
+        z = 1
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
-    # try:
-    #     x = 0.5
-    #     y = 0
-    #     z = 0
-    #     speed = 1
-    #     yaw = 30
-    #     frame_id = "body"
-    #     threading.Thread(target=navigate, args=(x, y, z, yaw, speed, frame_id, True)).start()
-    #     status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
-    # except:
-    #     status_label.config(text="Ошибка: введите числовые значения для  X, Y, высоты и скорости")
-
-# def navigate_wait(x=0, y=0, z=0, speed=0.5, frame_id='body', auto_arm=False):
-#     res = navigate(x=x, y=y, z=z, yaw=float('nan'), speed=speed, frame_id=frame_id, auto_arm=auto_arm)
-
-#     if not res.success:
-#         raise Exception(res.message)
-
-#     while not rospy.is_shutdown():
-#         telem = get_telemetry(frame_id='navigate_target')
-#         if math.sqrt(telem.x ** 2 + telem.y ** 2 + telem.z ** 2) < 0.2:
-#             return
-#         rospy.sleep(0.2)
-#         threading.Thread(target=navigate, args=(0.5, y, z, speed, 1, "body", True)).start()
-
-
-#navigate_wait(x=0.5, y=0, z=0, frame_id='body', speed=0.5, auto_arm=True)
-
-
-
-
+def fly_by_buttons_down():
+        x = 0
+        y = 0
+        z = -1
+        if entry_speed.get():
+            speed = float(entry_speed.get())
+        else:
+            speed = 1.0
+        yaw = float('nan')
+        frame_id = "body"
+        auto_arm = True
+        threading.Thread(navigate(x, y, z, yaw, speed, frame_id, auto_arm)).start()
+        status_label.config(text=f"X: {x}, Y: {y}, высота {z} и скорость {speed}")
 
 # Полет по глобальным координатам
 def fly_to_global_coordinates():
@@ -555,11 +600,11 @@ local_coordinates = tk.Button(window, text="Лок. Координаты", width
 activate_plan = tk.Button(window, text="Активировать план", width=20, relief="solid", command=fly_by_plan).grid(row=10, column=1, padx=20, pady=5 )
 # Кнопки управления полетом
 button_forward = tk.Button(window, text="Вперед", width=20, relief="solid", command=fly_by_buttons_forward).grid(row=1, column=4, padx=20, pady=5)
-button_backward = tk.Button(window, text="Назад", width=20, relief="solid", command=fly_by_plan).grid(row=2, column=4, padx=20, pady=5)
-button_left = tk.Button(window, text="Влево", width=20, relief="solid", command=fly_by_plan).grid(row=3, column=4, padx=20, pady=5)
-button_right = tk.Button(window, text="Вправо", width=20, relief="solid", command=fly_by_plan).grid(row=4, column=4, padx=20, pady=5)
-button_up = tk.Button(window, text="Вверх", width=20, relief="solid", command=fly_by_plan).grid(row=5, column=4, padx=20, pady=5)
-button_down = tk.Button(window, text="Вниз", width=20, relief="solid", command=fly_by_plan).grid(row=6, column=4, padx=20, pady=5)
+button_backward = tk.Button(window, text="Назад", width=20, relief="solid", command=fly_by_buttons_backward).grid(row=2, column=4, padx=20, pady=5)
+button_left = tk.Button(window, text="Влево", width=20, relief="solid", command=fly_by_buttons_left).grid(row=3, column=4, padx=20, pady=5)
+button_right = tk.Button(window, text="Вправо", width=20, relief="solid", command=fly_by_buttons_right).grid(row=4, column=4, padx=20, pady=5)
+button_up = tk.Button(window, text="Вверх", width=20, relief="solid", command=fly_by_buttons_up).grid(row=5, column=4, padx=20, pady=5)
+button_down = tk.Button(window, text="Вниз", width=20, relief="solid", command=fly_by_buttons_down).grid(row=6, column=4, padx=20, pady=5)
 
 status_label = tk.Label(window, text="Состояние дрона", fg="blue")
 status_label.grid(row=11, column=0, columnspan=2)
